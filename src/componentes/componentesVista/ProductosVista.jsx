@@ -10,7 +10,7 @@ function ProductosVista() {
 
   useEffect(() => {
     // fetch("http://localhost:3000/api/productos?search")
-       fetch("https://nxapi-mongodb-cliente.vercel.app/productos?search")
+       fetch("https://nxapi-mongodb-cliente.vercel.app/api/productos?search")
 
       .then((response) => response.json())
       .then((data) => {

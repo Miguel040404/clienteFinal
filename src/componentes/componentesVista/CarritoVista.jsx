@@ -16,7 +16,7 @@ function CarritoVista() {
 
     useEffect(() => {
         // fetch("http://localhost:3000/api/carrito?search")
-        fetch("https://nxapi-mongodb-cliente.vercel.app/carrito?search")
+        fetch("https://nxapi-mongodb-cliente.vercel.app/api/carrito?search")
 
             .then((response) => {
                 if (!response.ok) throw new Error("Error en la respuesta del servidor");
