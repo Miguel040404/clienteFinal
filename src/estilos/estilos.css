@@ -1,15 +1,6 @@
 @import "tailwindcss";
 
 @import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap');
-/* 
-
-@import url('https://fonts.googleapis.com/css2?family=Monomakh&display=swap');
-
-@import url('https://fonts.googleapis.com/css2?family=Sigmar&display=swap'); */
-
-/* .font-Sigmar {
-  font-family: 'Sigmar';
-} */
 
 @import url('https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
@@ -25,93 +16,3 @@
   background-color: #f4eee0;
 
 }
-
-/* .font-Monomakh {
-  font-family: 'Monomakh';
-} */
-
-
-/* @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap'); */
-
-/* 
-aside {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 200px;
-  height: 100vh;
-  background-color: #3498db;
-  padding: 1rem;
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-}
-
-.cabezera {
-  font-size: 1.5rem;
-  color: rgb(15, 0, 220);
-  margin-bottom: 1rem;
-  position: absolute;
-  top: 15px;
-  left: 55%;
-  transform: translate(-50%, -50%);
-  border-bottom: 2px solid #000000; 
-  padding: 10px;
-}
-
-body {
-  margin: 0;
-  padding: 0;
-  background-color: #f1f1f1;
-}
-
-.redes {
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
-}
-
-li {
-  margin-bottom: 0.5rem;
-}
-
-.imgInicio {
-  width: 150px !important;
-  height: 150px !important;
-  border-radius: 50% !important;
-  border: 5px solid #472ee7 !important;
-  margin-top: 120px !important;
-} */
-
-
-/* .imgInicio :hover {
-  border: 5px solid #2980b9;
-} */
-
-/* .botones {
-  background-color :white;
-  border: none;
-  color: #472ee7;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin: 4px 2px;
-  cursor: pointer;
-  border-radius: 5px;
-  transition: background-color 0.3s ease;
-}
-
-.botones:hover {
-  background-color: #2980b9;
-  color: white;
-} */
-
-
-/* .mainCintenido {
-  margin-left: 200px;
-  padding: 1rem;
-  border-radius: 10px;
-  width: calc(100% - 200px);
-} */
