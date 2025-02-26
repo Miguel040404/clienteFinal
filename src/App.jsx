@@ -10,10 +10,10 @@ import Footer from './componentes/Footer'
 import "./estilos/estilos.css";
 import { Toaster } from 'react-hot-toast'
 
-function MainWrapper() {
-  const location = useLocation();
-  return location.pathname === "/" ? <Main /> : null;
-}
+// function MainWrapper() {
+//   const location = useLocation();
+//   return location.pathname === "/" ? <Main /> : null;
+// }
 
 function App() {
   return (
@@ -25,9 +25,10 @@ function App() {
 
         
         <main className="flex-1">
-          <MainWrapper />
+          {/* <MainWrapper /> */}
           
           <Routes>
+            <Route path="/" element={<Main />} />
             <Route path="/productos" element={<Productos />} />
             <Route path="/carrito" element={<Carrito />} />
             <Route path="/sobrenosotros" element={<SobreNosotros />} />

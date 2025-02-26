@@ -15,7 +15,9 @@ function CarritoVista() {
     const navigate = useNavigate();
 
     useEffect(() => {
-        fetch("http://localhost:3000/api/carrito?search")
+        // fetch("http://localhost:3000/api/carrito?search")
+        fetch("https://nxapi-mongodb-cliente.vercel.app/carrito?search")
+
             .then((response) => {
                 if (!response.ok) throw new Error("Error en la respuesta del servidor");
                 return response.json();
@@ -56,8 +58,8 @@ function CarritoVista() {
     };
 
     const manejarEliminacion = async (productoId) => {
-        if (modalActivo) return; 
-        setModalActivo(true); 
+        if (modalActivo) return;
+        setModalActivo(true);
 
         const confirmado = await new Promise((resolve) => {
             toast.custom((t) => (
@@ -92,7 +94,9 @@ function CarritoVista() {
         if (!confirmado) return;
 
         try {
-            const respuesta = await fetch(`http://localhost:3000/api/carrito?id=${productoId}`, {
+         // const respuesta = await fetch(`http://localhost:3000/api/carrito?id=${productoId}`, {
+            const respuesta = await fetch(`https://nxapi-mongodb-cliente.vercel.app/api/carrito?id=${productoId}`, {
+
                 method: "DELETE",
                 headers: { "Content-Type": "application/json" },
             });
@@ -155,7 +159,7 @@ function CarritoVista() {
                                         key={producto.id}
                                         onClick={() => manejarEliminacion(producto.id)}
                                         className="!bg-red-100 hover:!bg-red-200 text-red-600 font-medium py-2 px-4 rounded-lg transition-colors duration-200 flex items-center"
-                                        disabled={modalActivo} 
+                                        disabled={modalActivo}
                                     >
                                         Eliminar
                                     </button>
@@ -173,17 +177,29 @@ function CarritoVista() {
                 </div>
 
                 <div className="flex justify-between bg-slate-200 rounded-xl p-6">
-                    <p className="text-2xl font-bold">
+                    {/* <p className="text-2xl font-bold">
                         Total: {productos.reduce((acc, p) => acc + (p.descuento > 0 ? p.descuento : p.precio), 0)}€
+                    </p> */}
+
+                    <p className="text-2xl font-bold">
+                        Total: {
+                            (() => {
+                                let total = 0;
+                                productos.forEach(p => {
+                                    total += p.descuento > 0 ? p.descuento : p.precio;
+                                });
+                                return total;
+                            })()
+                        }€
                     </p>
 
                     <button
                         onClick={handleCompraClick}
-                        disabled={productos.length === 0} 
+                        disabled={productos.length === 0}
                         className={`font-bold py-2 px-4 rounded-full transition-colors 
             ${productos.length === 0
-                                ? "bg-gray-300 text-gray-500 cursor-not-allowed" 
-                                : "!bg-orange-300 hover:!bg-yellow-500 text-gray-800 cursor-pointer"}` 
+                                ? "bg-gray-300 text-gray-500 cursor-not-allowed"
+                                : "!bg-orange-300 hover:!bg-yellow-500 text-gray-800 cursor-pointer"}`
                         }
                     >
                         {isAuthenticated ? "Comprar" : "Iniciar Sesión"}

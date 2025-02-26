@@ -9,7 +9,9 @@ function ProductosVista() {
   const [sortBy, setSortBy] = useState("");
 
   useEffect(() => {
-    fetch("http://localhost:3000/api/productos?search")
+    // fetch("http://localhost:3000/api/productos?search")
+       fetch("https://nxapi-mongodb-cliente.vercel.app/productos?search")
+
       .then((response) => response.json())
       .then((data) => {
         const formattedProducts = data.map((product) => ({

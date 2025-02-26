@@ -8,7 +8,9 @@ const ProductCard = ({ id, image, title, artista, price, stock, descuento }) => 
   const manejarAgregarCarrito = async () => {
     setIsAdding(true);
     try {
-      const respuesta = await fetch('http://localhost:3000/api/carrito', {
+      // const respuesta = await fetch('http://localhost:3000/api/carrito', {
+         const respuesta = await fetch('https://nxapi-mongodb-cliente.vercel.app/api/carrito', {
+
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({

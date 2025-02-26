@@ -1,23 +1,24 @@
 import React, { useEffect, useState } from "react";
-import ProductList from "./ProductList"; 
+import ProductList from "./ProductList";
 
 function Main() {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch("http://localhost:3000/api/productos?search")
+    // fetch("http://localhost:3000/api/productos?search")
+       fetch("https://nxapi-mongodb-cliente.vercel.app/api/productos?search")
       .then((response) => response.json())
       .then((data) => {
         const formattedProducts = data.map((product) => ({
           image: product.imagen_portada,
           title: product.titulo,
-          artista: product.artista, 
-          price: parseFloat(product.precio.$numberDecimal), 
-          stock: product.stock, 
-          descuento: product.descuento ? parseFloat(product.descuento.$numberDecimal) : 0 
+          artista: product.artista,
+          price: parseFloat(product.precio.$numberDecimal),
+          stock: product.stock,
+          descuento: product.descuento ? parseFloat(product.descuento.$numberDecimal) : 0
         }));
-        
+
         setProducts(formattedProducts);
         setLoading(false);
       })
