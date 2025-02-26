@@ -2,7 +2,8 @@
 import './App.css'
 import Header from './componentes/Header'
 import Main from './componentes/Main'
-import { BrowserRouter as Router, Route, Routes, useLocation } from "react-router-dom";
+// import { BrowserRouter as Router, Route, Routes, useLocation } from "react-router-dom";
+import { HashRouter  as Router, Route, Routes, useLocation } from "react-router-dom";
 import Carrito from './paginas/rutasMain/Carrito'
 import Productos from './paginas/rutasMain/Productos'
 import SobreNosotros from './paginas/rutasMain/SobreNosotros'
