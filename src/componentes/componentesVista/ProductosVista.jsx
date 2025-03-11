@@ -18,6 +18,7 @@ function ProductosVista() {
           image: product.imagen_portada,
           title: product.titulo,
           artista: product.artista,
+          genero: product.genero,
           price: parseFloat(product.precio.$numberDecimal),
           stock: product.stock,
           descuento: parseFloat(product.descuento.$numberDecimal) || 0

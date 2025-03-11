@@ -94,7 +94,7 @@ function CarritoVista() {
         if (!confirmado) return;
 
         try {
-         // const respuesta = await fetch(`http://localhost:3000/api/carrito?id=${productoId}`, {
+            // const respuesta = await fetch(`http://localhost:3000/api/carrito?id=${productoId}`, {
             const respuesta = await fetch(`https://nxapi-mongodb-cliente.vercel.app/api/carrito?id=${productoId}`, {
 
                 method: "DELETE",
@@ -133,11 +133,11 @@ function CarritoVista() {
                                 <img
                                     src={producto.imagen}
                                     alt={producto.titulo}
-                                    className="w-full object-cover"
+                                    className="w-full h-full object-cover"
                                     onError={(e) => { e.target.onerror = null; e.target.src = "/imagen-fallback.jpg"; }}
                                 />
                             </div>
-                            <div className="mt-2 p-2">
+                            <div className="relative p-4">
                                 <h2 className="text-slate-700 font-semibold text-lg">{producto.titulo}</h2>
                                 <p className="mt-1 text-sm text-slate-400">{producto.artista}</p>
                                 <div className="flex items-center gap-2 mt-3">
@@ -176,23 +176,12 @@ function CarritoVista() {
                     )}
                 </div>
 
-                <div className="flex justify-between bg-slate-200 rounded-xl p-6">
-                    {/* <p className="text-2xl font-bold">
-                        Total: {productos.reduce((acc, p) => acc + (p.descuento > 0 ? p.descuento : p.precio), 0)}€
-                    </p> */}
-
-                    <p className="text-2xl font-bold">
+                <div className="flex flex-col md:flex-row justify-between bg-slate-200 rounded-xl p-6">
+                    <p className="text-2xl font-bold mb-4 md:mb-0">
                         Total: {
-                            (() => {
-                                let total = 0;
-                                productos.forEach(p => {
-                                    total += p.descuento > 0 ? p.descuento : p.precio;
-                                });
-                                return total;
-                            })()
+                            productos.reduce((acc, p) => acc + (p.descuento > 0 ? p.descuento : p.precio), 0)
                         }€
                     </p>
-
                     <button
                         onClick={handleCompraClick}
                         disabled={productos.length === 0}
@@ -205,8 +194,8 @@ function CarritoVista() {
                         {isAuthenticated ? "Comprar" : "Iniciar Sesión"}
                     </button>
                 </div>
-
             </section>
+
 
             {showLogin && <Login onLoginSuccess={handleLoginSuccess} onClose={() => setShowLogin(false)} />}
         </div>
