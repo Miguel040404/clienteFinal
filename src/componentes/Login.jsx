@@ -49,7 +49,7 @@ const Login = ({ onLoginSuccess, onClose }) => {
           </div>
           <button
             type="submit"
-            className="w-full !bg-orange-300 hover:!bg-yellow-500 text-white font-bold py-2 px-4 rounded transition-colors"
+            className="w-full !bg-orange-300 hover:!bg-yellow-500 text-black font-bold py-2 px-4 rounded transition-colors"
           >
             Ingresar
           </button>

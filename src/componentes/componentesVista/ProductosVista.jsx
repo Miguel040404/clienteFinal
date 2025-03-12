@@ -6,15 +6,15 @@ function ProductosVista() {
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState("");
-  const [sortBy, setSortBy] = useState("");
+  const [sortBy, ordebarPor] = useState("");
 
   useEffect(() => {
     // fetch("http://localhost:3000/api/productos?search")
-       fetch("https://nxapi-mongodb-cliente.vercel.app/api/productos?search")
+    fetch("https://nxapi-mongodb-cliente.vercel.app/api/productos?search")
 
       .then((response) => response.json())
       .then((data) => {
-        const formattedProducts = data.map((product) => ({
+        const formatoProductos = data.map((product) => ({
           image: product.imagen_portada,
           title: product.titulo,
           artista: product.artista,
@@ -23,8 +23,8 @@ function ProductosVista() {
           stock: product.stock,
           descuento: parseFloat(product.descuento.$numberDecimal) || 0
         }));
-        setAllProducts(formattedProducts);
-        setFilteredProducts(formattedProducts);
+        setAllProducts(formatoProductos);
+        setFilteredProducts(formatoProductos);
         setLoading(false);
       })
       .catch((error) => {
@@ -33,32 +33,32 @@ function ProductosVista() {
       });
   }, []);
 
-  const handleSearch = (e) => {
+  const busqueda = (e) => {
     const term = e.target.value.toLowerCase();
     setSearchTerm(term);
-    applyFilters(term, sortBy);
+    aplicarFiltros(term, sortBy);
   };
 
-  const applyFilters = (term = searchTerm, sortMethod = sortBy) => {
+  const aplicarFiltros = (term = searchTerm, sortMethod = sortBy) => {
     let filtered = allProducts.filter(product =>
       product.title.toLowerCase().includes(term) ||
       product.artista.toLowerCase().includes(term)
     );
 
-    if (sortMethod === "cheapest") {
+    if (sortMethod === "masBarato") {
       filtered = [...filtered].sort((a, b) => a.price - b.price);
-    } else if (sortMethod === "mostExpensive") {
+    } else if (sortMethod === "masCaro") {
       filtered = [...filtered].sort((a, b) => b.price - a.price);
-    } else if (sortMethod === "discount") {
+    } else if (sortMethod === "descuento") {
       filtered = filtered.filter(product => product.descuento > 0);
     }
 
     setFilteredProducts(filtered);
   };
 
-  const handleSort = (method) => {
-    setSortBy(prev => prev === method ? "" : method);
-    applyFilters(searchTerm, method);
+  const manejo = (method) => {
+    ordebarPor(prev => prev === method ? "" : method);
+    aplicarFiltros(searchTerm, method);
   };
 
   return (
@@ -74,33 +74,33 @@ function ProductosVista() {
           placeholder="Buscar por título o artista..."
           className="w-full p-4 rounded-lg border bg-orange-100 border-gray-300 focus:outline-none focus:ring-2 focus:ring-orange-300 shadow-sm transition-all duration-300"
           value={searchTerm}
-          onChange={handleSearch}
+          onChange={busqueda}
         />
 
         <div className="flex flex-wrap gap-3 justify-center">
           <button
-            onClick={() => handleSort("cheapest")}
-            className={`px-4 py-2 rounded-lg font-medium transition-all border !border-slate-300  ${sortBy === "cheapest"
+            onClick={() => manejo("masBarato")}
+            className={`px-4 py-2 rounded-lg font-medium transition-all border !border-slate-300  ${sortBy === "masBarato"
               ? "!bg-orange-300 !text-white"
               : "!bg-orange-100 !text-gray-700 hover:!bg-orange-200"
               }`}
           >
-            Más baratos
+            Precios mas bajos
           </button>
 
           <button
-            onClick={() => handleSort("mostExpensive")}
-            className={`px-4 py-2 rounded-lg font-medium transition-all border !border-slate-300  ${sortBy === "mostExpensive"
+            onClick={() => manejo("masCaro")}
+            className={`px-4 py-2 rounded-lg font-medium transition-all border !border-slate-300  ${sortBy === "masCaro"
               ? "!bg-orange-300 !text-white"
               : "!bg-orange-100 !text-gray-700 hover:!bg-orange-200"
               }`}
           >
-            Más caros
+            Precios mas altos
           </button>
 
           <button
-            onClick={() => handleSort("discount")}
-            className={`px-4 py-2 rounded-lg font-medium transition-all border !border-slate-300  ${sortBy === "discount"
+            onClick={() => manejo("descuento")}
+            className={`px-4 py-2 rounded-lg font-medium transition-all border !border-slate-300  ${sortBy === "descuento"
               ? "!bg-orange-300 !text-white"
               : "!bg-orange-100 !text-gray-700 hover:!bg-orange-200"
               }`}

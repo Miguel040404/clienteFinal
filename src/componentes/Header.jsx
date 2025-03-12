@@ -10,16 +10,6 @@ function Header() {
   
   const [showLogin, setShowLogin] = useState(false);
 
-  
-  // useEffect(() => {
-  //   const checkAuth = () => {
-  //     setIsAuthenticated(localStorage.getItem("isAuthenticated") === "true");
-  //   };
-
-  //   window.addEventListener("storage", checkAuth);
-  //   return () => window.removeEventListener("storage", checkAuth);
-  // }, []);
-
   const handleLogout = () => {
     setIsAuthenticated(false);
     localStorage.removeItem("isAuthenticated"); 

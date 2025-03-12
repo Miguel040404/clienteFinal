@@ -38,12 +38,12 @@ const ProductModal = ({ product, onClose }) => {
             <h2 className="text-2xl font-bold text-slate-800">{product.title}</h2>
             <p className="text-lg text-slate-600"> <span className="font-bold">Artista:</span>  {product.artista}</p>
             <p className="text-lg text-slate-600"><span className="font-bold">Género:</span> {product.genero}</p>
-            
+
             <div className="space-y-2">
               <p className={`text-lg ${product.stock > 0 ? "text-green-600" : "text-red-500"}`}>
                 {product.stock > 0 ? `Disponible (${product.stock} unidades)` : "Agotado"}
               </p>
-              
+
               <div className="flex items-center gap-3">
                 {product.descuento > 0 ? (
                   <>
@@ -54,7 +54,7 @@ const ProductModal = ({ product, onClose }) => {
                       {product.price}€
                     </span>
                     <span className="text-sm bg-orange-100 text-orange-600 px-2 py-1 rounded">
-                      {Math.round(((product.price - product.descuento) / product.price) * 100)}% OFF
+                    DESCUENTO DEL {Math.round(((product.price - product.descuento) / product.price) * 100)}% 
                     </span>
                   </>
                 ) : (
@@ -72,11 +72,10 @@ const ProductModal = ({ product, onClose }) => {
                 onClose();
               }}
               disabled={product.stock === 0}
-              className={`w-full py-3 rounded-lg flex items-center justify-center gap-2 ${
-                product.stock > 0
+              className={`w-full py-3 rounded-lg flex items-center justify-center gap-2 ${product.stock > 0
                   ? "!bg-orange-100 hover:!bg-orange-200 !text-black"
                   : "!bg-gray-300 !text-gray-500 cursor-not-allowed"
-              }`}
+                }`}
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -101,14 +100,14 @@ const ProductModal = ({ product, onClose }) => {
   );
 };
 
-const ProductCard = ({ 
-  id, 
-  image, 
-  title, 
-  artista, 
+const ProductCard = ({
+  id,
+  image,
+  title,
+  artista,
   genero,
-  price, 
-  stock, 
+  price,
+  stock,
   descuento,
 }) => {
   const [isAdding, setIsAdding] = useState(false);
@@ -145,7 +144,7 @@ const ProductCard = ({
 
   return (
     <>
-      <article 
+      <article
         onClick={() => setIsModalOpen(true)}
         className="w-full max-w-xs sm:max-w-sm md:max-w-md rounded-xl bg-white p-4 shadow-lg hover:shadow-xl hover:transform hover:scale-105 duration-300 mx-auto cursor-pointer"
       >
@@ -159,7 +158,7 @@ const ProductCard = ({
 
         <div className="mt-2 p-2">
           <h2 className="text-slate-700 font-semibold text-lg sm:text-xl">{title}</h2>
-         
+
           <p className={`mt-1 text-sm sm:text-base font-semibold ${stock > 0 ? "text-green-600" : "text-red-500"}`}>
             {stock > 0 ? `Stock: ${stock}` : "Agotado"}
           </p>
@@ -182,11 +181,10 @@ const ProductCard = ({
                 manejarAgregarCarrito(e);
               }}
               disabled={stock === 0 || isAdding}
-              className={`flex items-center justify-center space-x-1.5 rounded-lg px-2 sm:px-4 py-1.5 w-full xs:w-auto text-sm sm:text-base ${
-                stock > 0
+              className={`flex items-center justify-center space-x-1.5 rounded-lg px-2 sm:px-4 py-1.5 w-full xs:w-auto text-sm sm:text-base ${stock > 0
                   ? "!bg-orange-100 hover:!bg-orange-200 text-black"
                   : "!bg-gray-300 !text-gray-500 cursor-not-allowed"
-              } transition-colors duration-200`}
+                } transition-colors duration-200`}
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -238,7 +236,7 @@ const ProductList = ({ products }) => {
     <section className="py-10 bg-slate-300 rounded-xl">
       <div className="mx-auto grid max-w-6xl grid-cols-1 gap-6 p-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
         {products.map((product, index) => (
-          <ProductCard 
+          <ProductCard
             key={index}
             id={product.id}
             image={product.image}
