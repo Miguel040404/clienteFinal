@@ -104,7 +104,9 @@ function CarritoVista() {
             if (!respuesta.ok) throw new Error("No se pudo eliminar el producto");
 
             setProductos((prev) => prev.filter((producto) => producto.id !== productoId));
-            toast.success("Producto eliminado correctamente");
+            toast.success("Producto eliminado correctamente", {
+                duration: 2000,
+            });
         } catch (error) {
             toast.error("No se pudo eliminar el producto");
             console.error("Error al eliminar:", error);
