@@ -122,10 +122,10 @@ function CarritoVista() {
     }
 
     return (
-        <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-8 w-full md:mt-30 mt-16">
-            <h1 className="text-3xl md:text-4xl font-bold text-center text-slate-700 mb-8 md:mb-12 font-FiraSans mt-40">
+        <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-8 w-full md:mt-20 mt-16 -mb-20">
+            {/* <h1 className="text-lg md:text-xl font-bold text-center text-slate-700 mb-4 md:mb-6 font-FiraSans -mt-10">
                 Tu Carrito de Compras
-            </h1>
+            </h1> */}
 
             <section className="py-10 bg-slate-300 rounded-xl">
                 <div className="mx-auto grid max-w-6xl grid-cols-1 gap-6 p-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">

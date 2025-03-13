@@ -1,6 +1,6 @@
 function NosotrosVista() {
   return (
-    <div className="flex justify-center items-center min-h-screen bg-gray-100 mt-25 -mb-25">
+    <div className="flex justify-center items-center min-h-screen bg-gray-100 mt-25 -mb-20">
       <section className=" bg-slate-400 text-white shadow-xl rounded-xl p-10 md:p-14 lg:p-20 w-full max-w-4xl">
         <div className="text-center mb-10">
           <h2 className="text-5xl font-bold mb-4 text-orange-200">¿Quiénes somos?</h2>
