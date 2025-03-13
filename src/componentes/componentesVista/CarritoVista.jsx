@@ -128,6 +128,25 @@ function CarritoVista() {
             </h1> */}
 
             <section className="py-10 bg-slate-300 rounded-xl">
+
+            <div className="flex flex-col md:flex-row justify-between bg-slate-200 rounded-xl p-6 m-5 -mt-3">
+                    <p className="text-2xl font-bold mb-4 md:mb-0">
+                        Total de tu carrito: {
+                            productos.reduce((acc, p) => acc + (p.descuento > 0 ? p.descuento : p.precio), 0)
+                        }€
+                    </p>
+                    <button
+                        onClick={handleCompraClick}
+                        disabled={productos.length === 0}
+                        className={`font-bold py-2 px-4 rounded-full transition-colors 
+            ${productos.length === 0
+                                ? "bg-gray-300 text-gray-500 cursor-not-allowed"
+                                : "!bg-orange-300 hover:!bg-yellow-500 text-gray-800 cursor-pointer"}`
+                        }
+                    >
+                        {isAuthenticated ? "Comprar" : "Iniciar Sesión"}
+                    </button>
+                </div>
                 <div className="mx-auto grid max-w-6xl grid-cols-1 gap-6 p-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
                     {productos.map((producto) => (
                         <article key={producto.id} className="rounded-xl bg-white p-4 shadow-lg hover:shadow-xl transform hover:scale-105 duration-300 max-w-sm mx-auto">
@@ -178,24 +197,7 @@ function CarritoVista() {
                     )}
                 </div>
 
-                <div className="flex flex-col md:flex-row justify-between bg-slate-200 rounded-xl p-6">
-                    <p className="text-2xl font-bold mb-4 md:mb-0">
-                        Total: {
-                            productos.reduce((acc, p) => acc + (p.descuento > 0 ? p.descuento : p.precio), 0)
-                        }€
-                    </p>
-                    <button
-                        onClick={handleCompraClick}
-                        disabled={productos.length === 0}
-                        className={`font-bold py-2 px-4 rounded-full transition-colors 
-            ${productos.length === 0
-                                ? "bg-gray-300 text-gray-500 cursor-not-allowed"
-                                : "!bg-orange-300 hover:!bg-yellow-500 text-gray-800 cursor-pointer"}`
-                        }
-                    >
-                        {isAuthenticated ? "Comprar" : "Iniciar Sesión"}
-                    </button>
-                </div>
+             
             </section>
 
 
